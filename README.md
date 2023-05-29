@@ -12,7 +12,51 @@ The LLSafe library consists of two main files: `LLSafe.h` and `LLSafe.c`. To use
 ```c
 #include "LLSafe.h"
 ```
+## Running the Project
 
+To run the project, follow the instructions provided below. The project involves creating and managing multiple threads that will concurrently access a global linked list, perform additions and deletions, and ensure thread safety using locking mechanisms.
+
+### Linux Environment
+
+1. Compile the LinkedList library by executing the following commands:
+   ```bash
+   gcc -c LinkedList.c -o LinkedList.o
+   ar rcs libLinkedList.a LinkedList.o
+   ```
+
+2. Compile the main program by running the following command:
+   ```bash
+   gcc threadHandling.c -L. -lLinkedList -o threadHandling -lpthread
+   ```
+
+3. Run the compiled program using the command:
+   ```bash
+   ./threadHandling
+   ```
+
+### Compilation with Solution
+
+If you want to compile the code with the solution, follow these steps:
+
+1. Compile the main program with the LinkedList library and the pthread library:
+   ```bash
+   gcc -o solution solution.c LinkedList.c -lpthread
+   ```
+
+2. Execute the compiled program:
+   ```bash
+   ./solution
+   ```
+
+## Notes and Considerations
+
+- The provided LinkedList library is designed to ensure thread safety for multi-threaded use. The user does not need to worry about thread synchronization as the library handles it internally.
+- The library allows the user to create multiple lists, and the threads associated with different lists will not interfere with each other. Thread synchronization is only required for threads working on the same list.
+- The steps provided assume a Linux environment. Please make sure to have the necessary dependencies installed on your system.
+- The library has been compiled using the given commands, producing the `libLinkedList.a` file. These commands can be adjusted as per your specific setup or requirements.
+- The program involves creating and managing threads, and it is expected to run with the desired synchronization and functionality.
+
+Feel free to modify and experiment with the code as needed, and enjoy exploring the multi-threaded capabilities of the LinkedList library in a safe and synchronized manner!
 ### Book Structure
 
 The library includes a `Book` structure that can be used as the data type for the elements stored in the linked list. Each book has an ID, author name, and content. The `Book` structure is defined as follows:
